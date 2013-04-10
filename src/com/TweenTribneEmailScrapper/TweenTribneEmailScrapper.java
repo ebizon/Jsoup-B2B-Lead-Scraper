@@ -55,7 +55,7 @@ public class TweenTribneEmailScrapper extends JFrame {
     private JTextField jTextField1, jTextField2, jTextField3, jTextField4, jTextField5;
     private JLabel labelKey, labelValue;
     private JTextField key1, value1, key2, value2, key3, value3, key4, value4, key5, value5, key6, value6, key7, value7, key8, value8, key9, value9, key10, value10;
-    private JButton jButton1,fetchbtn,exportbtn;
+    private JButton jButton1, fetchbtn, exportbtn;
     private JPanel contentPane;
     private JComboBox selectTypeBox;
     private HashMap<String, String> hashMap = new HashMap<String, String>();
@@ -65,7 +65,7 @@ public class TweenTribneEmailScrapper extends JFrame {
     private JTextField jtf1, jtf2, jtf3, jtf4;
     private JButton jb1;
     private JPanel jp1;
-    private JCheckBox []cbox=new JCheckBox[20];
+    private JCheckBox[] cbox = new JCheckBox[20];
     //for second panel code end
     String fileData = "", typeString = "";
     String nextPage = "";
@@ -240,7 +240,7 @@ public class TweenTribneEmailScrapper extends JFrame {
         //jTextField3.setForeground(new Color(0, 0, 255));
         //jTextField3.setToolTipText("Enter your Destination file path");
 
-       // key1.setForeground(new Color(0, 0, 255));
+        // key1.setForeground(new Color(0, 0, 255));
         //key1.setToolTipText("key1");
         //key1.setVisible(false);
 
@@ -386,180 +386,174 @@ public class TweenTribneEmailScrapper extends JFrame {
     }
 
     private void jButton1_actionPerformed(ActionEvent e) {
-       // typeString = (String) selectTypeBox.getSelectedItem();
+        // typeString = (String) selectTypeBox.getSelectedItem();
         //String container = new String(jTextField1.getText());
         String url = new String(jTextField2.getText());
-        
+
         //String destination = new String(jTextField3.getText());
         //String item = (String) selectTypeBox.getSelectedItem();
         String searchstring = new String(jTextField4.getText());
-        searchstring+="(site:linkedin.com/pub OR site:linkedin.com/in) -\"pub/dir\"";
+        searchstring += "(site:linkedin.com/pub OR site:linkedin.com/in) -\"pub/dir\"";
         //String searchsite = new String(jTextField5.getText());
         String final_serachurl = url + "/search?q=" + URLEncoder.encode(searchstring);
-/*
+        /*
         if (container.equals("") || url.equals("") || destination.equals("") || searchstring.equals("") || searchsite.equals("")) {
+        jButton1.setEnabled(false);
+        JLabel errorFields = new JLabel("<HTML><FONT COLOR = Blue>You must enter all blank fields.</FONT></HTML>");
+        JOptionPane.showMessageDialog(null, errorFields);
+        jButton1.setEnabled(true);
+        this.setVisible(true);
+        } else if (item.equals("select type")) {
+         */
+        if (url.equals("") || searchstring.equals("")) {
             jButton1.setEnabled(false);
             JLabel errorFields = new JLabel("<HTML><FONT COLOR = Blue>You must enter all blank fields.</FONT></HTML>");
             JOptionPane.showMessageDialog(null, errorFields);
             jButton1.setEnabled(true);
             this.setVisible(true);
-        } else if (item.equals("select type")) {
-            */ 
-        if(url.equals("")||searchstring.equals(""))
-        {
-        jButton1.setEnabled(false);
-            JLabel errorFields = new JLabel("<HTML><FONT COLOR = Blue>You must enter all blank fields.</FONT></HTML>");
-            JOptionPane.showMessageDialog(null, errorFields);
-            jButton1.setEnabled(true);
-            this.setVisible(true);
-        }
-        else
-        {
-        try {
-                
-                int i,total_item=0,total,serialn;
-                String Cname[]=new String[12];
+        } else {
+            try {
+
+                int i, total_item = 0, total, serialn;
+                String Cname[] = new String[12];
                 Document doc;
-                 
+
                 //doc = Jsoup.connect("http://google.com/search?q=rajcomics").userAgent("Mozilla").get();
                 doc = Jsoup.connect(final_serachurl).userAgent("Mozilla").get();
                 //doc = Jsoup.connect("http://google.com").userAgent("Mozilla").get();
                 //String title = doc.title();
                 //System.out.println("title : " + title);
                 Elements links = doc.select("a[href]");
-                System.out.println("Total = "+links.size());
-                total_item=links.size();
-                
-                
-                String name="";
-                
-                fetchbtn=new JButton(" Fetch E-Mail ");
-                exportbtn=new JButton(" Export ");
-                  fetchbtn.setBounds(150,550,150,25);
-                
-                JLabel label[]=new JLabel[total_item];
-               // cbox=new JCheckBox[20];
-                i=0;total=0;serialn=0;
-                 jp1.setLayout(null);
-               String str1,str2="";
+                System.out.println("Total = " + links.size());
+                total_item = links.size();
+
+
+                String name = "";
+
+                fetchbtn = new JButton(" Fetch E-Mail ");
+                exportbtn = new JButton(" Export ");
+                fetchbtn.setBounds(150, 550, 150, 25);
+
+                JLabel label[] = new JLabel[total_item];
+                // cbox=new JCheckBox[20];
+                i = 0;
+                total = 0;
+                serialn = 0;
+                jp1.setLayout(null);
+                String str1, str2 = "";
                 for (Element link : links) {
-                //Get the value from href attribute
-                    if(link.text().equalsIgnoreCase("Similar"))
+                    //Get the value from href attribute
+                    if (link.text().equalsIgnoreCase("Similar")) {
                         break;
-                    if(i>=37 && !link.text().equalsIgnoreCase("Cached"))
-                    {
-                        str2="";
-                     // label[serialn]=new JLabel();
-                      cbox[serialn]=new JCheckBox();
-                      str1=link.text();
-                      for(int j=0;j<str1.length();j++)
-                      {
-                          if(str1.charAt(j)=='-'||str1.charAt(j)=='|')
-                              break;
-                          str2+=str1.charAt(j);
-                      }
-                      //label[i-37].setText(str2); //link.text());
-                      Cname[total]=str2;
-                      total++;
-                      //label[i-37].setBounds(100,50+(25*(i-37)),200,20);
-                      cbox[serialn].setBounds(50, 50+(25*(i-37)), 250, 20);
-                      cbox[serialn].setText(str2);
-                      jp1.add(cbox[serialn]);
-                      //jp1.add(label[i-37]);
-                      if(serialn==10)
-                          break;
-                      serialn++;
-                      
-                    } i++;
-                }
-                    
-                    exportbtn.setBounds(350,550,100,25);
-                exportbtn.addActionListener(
-                        
-                                                new ActionListener() 
-                                                {
-
-                                                   public void actionPerformed(ActionEvent paramActionEvent) 
-                                                   {
-
-                                                       //.xlsx creation starts here
-                                                      try
-                                                      {
-                                                       Workbook wb = null;
-		//System.out.print("Type xlsx i.e 2007+ if u wan2 create xlsx file (default xls) => ");
-		//BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		
-                String location=JOptionPane.showInputDialog(null, "Enter File URL.","",1);
-                                                                                    
-                String xlsx = "xls";
-		if (xlsx.equalsIgnoreCase("xlsx"))
-			wb = new XSSFWorkbook();
-		else
-			wb = new HSSFWorkbook();
-
-		Sheet sheet = wb.createSheet("Email Scrapper");
-                int k=1;
-		// row numbering starts from 0
-		Row row[]=new Row[12];
-                Cell cell[]=new Cell[12];
-                //Cell cell;
-                for(int z=0;z<10;z++)
-                {
-                    if(cbox[z].isSelected() && !cbox[z].getText().isEmpty())
-                    {
-                        
-                   row[k] = sheet.createRow((short) k);
-		   cell[k] = row[k].createCell(0);
-		   cell[k].setCellValue(cbox[z].getText());
-                    /*
-                        Row row = sheet.createRow((short) 1);
-		Cell cell = row.createCell(0);
-		cell.setCellValue("SHIVA");
-*/
-                        k++;
                     }
+                    if (i >= 37 && !link.text().equalsIgnoreCase("Cached")) {
+                        str2 = "";
+                        // label[serialn]=new JLabel();
+                        cbox[serialn] = new JCheckBox();
+                        str1 = link.text();
+                        for (int j = 0; j < str1.length(); j++) {
+                            if (str1.charAt(j) == '-' || str1.charAt(j) == '|') {
+                                break;
+                            }
+                            str2 += str1.charAt(j);
+                        }
+                        //label[i-37].setText(str2); //link.text());
+                        Cname[total] = str2;
+                        total++;
+                        //label[i-37].setBounds(100,50+(25*(i-37)),200,20);
+                        cbox[serialn].setBounds(50, 50 + (25 * (i - 37)), 250, 20);
+                        cbox[serialn].setText(str2);
+                        jp1.add(cbox[serialn]);
+                        //jp1.add(label[i-37]);
+                        if (serialn == 10) {
+                            break;
+                        }
+                        serialn++;
+
+                    }
+                    i++;
                 }
-                
-		String excelFileName = "EmailScrapperContacts.xls";
-		if (wb instanceof XSSFWorkbook)
-			excelFileName += "x";
-                //java.io.File fs =new java.io.File("c:\")
-		FileOutputStream fos = new FileOutputStream(location+"/"+excelFileName);
-		wb.write(fos);
-		fos.flush();
-		fos.close();
-                                              
-                                                       JOptionPane.showMessageDialog(null, "File has been exported.");
-                                                      }
-                                                      catch(Exception exc)
-                                                      {
-                                                  JOptionPane.showMessageDialog(null, "Export Fails : "+exc.getMessage());
-                                                          
-                                                      }
-                                                       
-                                                       
-                                                       
-                                                       //.xlsx creation ends here
-        
-                                                   }
-                                                }
-                                            );
-               
-                    
-                    
-                    
-                    jp1.add(fetchbtn);
-                    jp1.add(exportbtn);
-                   // name += link.text()+"\n";
-                   // System.out.println("\nlink : " + link.attr("href"));
-                    //System.out.println("text : " + link.text());
-                    //i++;
+
+                exportbtn.setBounds(350, 550, 100, 25);
+                exportbtn.addActionListener(
+                        new ActionListener() {
+
+                            public void actionPerformed(ActionEvent paramActionEvent) {
+
+                                //.xlsx creation starts here
+                                try {
+                                    Workbook wb = null;
+                                    //System.out.print("Type xlsx i.e 2007+ if u wan2 create xlsx file (default xls) => ");
+                                    //BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+                                    String location = JOptionPane.showInputDialog(null, "Enter File URL.", "", 1);
+
+                                    String xlsx = "xls";
+                                    if (xlsx.equalsIgnoreCase("xlsx")) {
+                                        wb = new XSSFWorkbook();
+                                    } else {
+                                        wb = new HSSFWorkbook();
+                                    }
+
+                                    Sheet sheet = wb.createSheet("Email Scrapper");
+                                    int k = 1;
+                                    // row numbering starts from 0
+                                    Row row[] = new Row[12];
+                                    Cell cell[] = new Cell[12];
+                                    //Cell cell;
+                                    for (int z = 0; z < 10; z++) {
+                                        if (cbox[z].isSelected() && !cbox[z].getText().isEmpty()) {
+
+                                            row[k] = sheet.createRow((short) k);
+                                            cell[k] = row[k].createCell(0);
+                                            cell[k].setCellValue(cbox[z].getText());
+                                            /*
+                                            Row row = sheet.createRow((short) 1);
+                                            Cell cell = row.createCell(0);
+                                            cell.setCellValue("SHIVA");
+                                             */
+                                            k++;
+                                        }
+                                    }
+
+                                    String excelFileName = "EmailScrapperContacts.xls";
+                                    if (wb instanceof XSSFWorkbook) {
+                                        excelFileName += "x";
+                                    }
+                                    //java.io.File fs =new java.io.File("c:\")
+                                    FileOutputStream fos = new FileOutputStream(location + "/" + excelFileName);
+                                    wb.write(fos);
+                                    fos.flush();
+                                    fos.close();
+
+                                    JOptionPane.showMessageDialog(null, "File has been exported.");
+                                } catch (Exception exc) {
+                                    JOptionPane.showMessageDialog(null, "Export Fails : " + exc.getMessage());
+
+                                }
+
+
+
+                                //.xlsx creation ends here
+
+                            }
+                        });
+
+
+
+
+                jp1.add(fetchbtn);
+                jp1.add(exportbtn);
+                // name += link.text()+"\n";
+                // System.out.println("\nlink : " + link.attr("href"));
+                //System.out.println("text : " + link.text());
+                //i++;
                 //}
                 //System.out.println("Total 2 = "+total_item);
                 this.setVisible(false);
                 contentPane = (JPanel) this.getContentPane();
                 this.remove(contentPane);
-               /* jl1.setBounds(10, 10, 50, 20);
+                /* jl1.setBounds(10, 10, 50, 20);
                 jl1.setText(name);
                 jl2.setBounds(10, 40, 50, 20);
                 jl3.setBounds(10, 70, 50, 20);
