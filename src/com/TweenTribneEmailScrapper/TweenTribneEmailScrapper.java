@@ -99,10 +99,11 @@ public class TweenTribneEmailScrapper extends JFrame {
         selectTypeBox.setBackground(Color.CYAN);
         selectTypeBox.setForeground(Color.blue);
 
-        String searchweburl[] = {"Select url", "http://www.google.com", "http://www.bing.com", "http://www.dogpile.com"};
+        //String searchweburl[] = {"Select url", "http://www.google.com", "http://www.bing.com", "http://www.dogpile.com"};
+        String searchweburl[] = {"Select url", "http://www.google.com"};
         selectsearchUrl = new JComboBox(searchweburl);
-        selectsearchUrl.setBackground(Color.CYAN);
-        selectsearchUrl.setForeground(Color.blue);
+        //selectsearchUrl.setBackground(Color.CYAN);
+        //selectsearchUrl.setForeground(Color.blue);
 
         selectTypeBox.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent paramActionEvent) {
@@ -199,187 +200,45 @@ public class TweenTribneEmailScrapper extends JFrame {
 
         jButton1 = new JButton();
         contentPane = (JPanel) this.getContentPane();
-
-        //labelContent.setHorizontalAlignment(SwingConstants.LEFT);
-        //labelContent.setForeground(new Color(0, 0, 255));
-        //labelContent.setText("Content:");
-
+        
         labelUrl.setHorizontalAlignment(SwingConstants.LEFT);
-        labelUrl.setForeground(new Color(0, 0, 255));
+        //labelUrl.setForeground(new Color(0, 0, 255));
         labelUrl.setText("Select URL:");
 
-        //labelSite.setHorizontalAlignment(SwingConstants.LEFT);
-        //labelSite.setForeground(new Color(0, 0, 255));
-        //labelSite.setText("Search Site:");
-
         labelSearch.setHorizontalAlignment(SwingConstants.LEFT);
-        labelSearch.setForeground(new Color(0, 0, 255));
+        //labelSearch.setForeground(new Color(0, 0, 255));
         labelSearch.setText("Search String:");
 
-        //labelFileDest.setHorizontalAlignment(SwingConstants.LEFT);
-        //labelFileDest.setForeground(new Color(0, 0, 255));
-        //labelFileDest.setText("File Destination:");
-
-        //labelType.setHorizontalAlignment(SwingConstants.LEFT);
-        //labelType.setForeground(new Color(0, 0, 255));
-        //labelType.setText("Type");
-
-        //labelKey.setHorizontalAlignment(SwingConstants.LEFT);
-        //labelKey.setForeground(new Color(0, 0, 255));
-        //labelKey.setText("Key");
-        //labelKey.setVisible(false);
-
-        //labelValue.setHorizontalAlignment(SwingConstants.LEFT);
-        //labelValue.setForeground(new Color(0, 0, 255));
-        //labelValue.setText("Value");
-        //labelValue.setVisible(false);
+        
 
         jLabelTitle.setHorizontalAlignment(SwingConstants.CENTER);
         //jLabelTitle.setForeground(Color.MAGENTA);
         jLabelTitle.setText("Ebizon Email Scraper");
         jLabelTitle.setFont(new Font("Serif", Font.BOLD, 18));
 
-        //jTextField1.setForeground(new Color(0, 0, 255));
-        //jTextField1.setSelectedTextColor(new Color(0, 0, 255));
-        //jTextField1.setToolTipText("Enter your Container");
 
         jTextField2.setForeground(new Color(0, 0, 255));
         jTextField2.setToolTipText("Enter your URL");
 
-        //jTextField3.setForeground(new Color(0, 0, 255));
-        //jTextField3.setToolTipText("Enter your Destination file path");
-
-        // key1.setForeground(new Color(0, 0, 255));
-        //key1.setToolTipText("key1");
-        //key1.setVisible(false);
-
-        //value1.setForeground(new Color(0, 0, 255));
-        //value1.setToolTipText("value1");
-        //value1.setVisible(false);
-
-        //key2.setForeground(new Color(0, 0, 255));
-        //key2.setToolTipText("key2");
-        //key2.setVisible(false);
-
-        /*value2.setForeground(new Color(0, 0, 255));
-         value2.setToolTipText("value2");
-         value2.setVisible(false);
-
-         key3.setForeground(new Color(0, 0, 255));
-         key3.setToolTipText("key3");
-         key3.setVisible(false);
-
-         value3.setForeground(new Color(0, 0, 255));
-         value3.setToolTipText("value3");
-         value3.setVisible(false);
-
-         key4.setForeground(new Color(0, 0, 255));
-         key4.setToolTipText("key4");
-         key4.setVisible(false);
-
-         value4.setForeground(new Color(0, 0, 255));
-         value4.setToolTipText("value4");
-         value4.setVisible(false);
-
-         key5.setForeground(new Color(0, 0, 255));
-         key5.setToolTipText("key5");
-         key5.setVisible(false);
-
-         value5.setForeground(new Color(0, 0, 255));
-         value5.setToolTipText("value5");
-         value5.setVisible(false);
-
-         key6.setForeground(new Color(0, 0, 255));
-         key6.setToolTipText("key6");
-         key6.setVisible(false);
-
-         value6.setForeground(new Color(0, 0, 255));
-         value6.setToolTipText("value6");
-         value6.setVisible(false);
-         key7.setForeground(new Color(0, 0, 255));
-         key7.setToolTipText("key7");
-         key7.setVisible(false);
-
-         value7.setForeground(new Color(0, 0, 255));
-         value7.setToolTipText("value7");
-         value7.setVisible(false);
-         key8.setForeground(new Color(0, 0, 255));
-         key8.setToolTipText("key8");
-         key8.setVisible(false);
-
-         value8.setForeground(new Color(0, 0, 255));
-         value8.setToolTipText("value8");
-         value8.setVisible(false);
-         key9.setForeground(new Color(0, 0, 255));
-         key9.setToolTipText("key9");
-         key9.setVisible(false);
-
-         value9.setForeground(new Color(0, 0, 255));
-         value9.setToolTipText("value9");
-         value9.setVisible(false);
-         key10.setForeground(new Color(0, 0, 255));
-         key10.setToolTipText("key10");
-         key10.setVisible(false);
-
-         value10.setForeground(new Color(0, 0, 255));
-         value10.setToolTipText("value10");
-         value10.setVisible(false);*/
         jButton1.setBackground(new Color(204, 204, 204));
         jButton1.setForeground(new Color(0, 0, 255));
         jButton1.setText("Enter");
         jButton1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-//String msg=jTextField1.getText()+" // "+jTextField2.getText()+" // "+jTextField3.getText()+" // "+jTextField4.getText()+" // "+jTextField5.getText();
-                //              JOptionPane.showMessageDialog(null, msg, "InfoBox: " , JOptionPane.INFORMATION_MESSAGE);
-                //              jButton1_actionPerformed(e);
                 jButton1_actionPerformed(e);
 
             }
         });
 // contentPane
-
         contentPane.setLayout(null);
         contentPane.setBorder(BorderFactory.createEtchedBorder());
         contentPane.setBackground(new Color(204, 204, 204));
-        addComponent(contentPane, jLabelTitle, 85, 5, 206, 35);
-        //addComponent(contentPane, labelContent, 45, 40, 106, 18);
+        addComponent(contentPane, jLabelTitle, 135, 5, 206, 35);
         addComponent(contentPane, labelUrl, 65, 77, 97, 18);
-        //addComponent(contentPane, labelSite, 45, 114, 106, 18);
-        addComponent(contentPane, labelSearch, 65, 150, 130, 18);
-        //addComponent(contentPane, labelFileDest, 45, 185, 130, 18);
-        //addComponent(contentPane, labelType, 45, 225, 106, 18);
-        //addComponent(contentPane, jTextField1, 165, 40, 183, 22);
-        //addComponent(contentPane, jTextField2, 185, 75, 183, 22);
+        addComponent(contentPane, labelSearch, 65, 150, 130, 18);       
         addComponent(contentPane, selectsearchUrl, 185, 75, 183, 22);
-
-        //addComponent(contentPane, jTextField5, 165, 110, 183, 22);
         addComponent(contentPane, jTextField4, 185, 145, 183, 22);
-        //addComponent(contentPane, jTextField3, 165, 180, 183, 22);
-
-        //addComponent(contentPane, labelKey, 150, 150, 183, 22);
-        //addComponent(contentPane, labelValue, 350, 150, 183, 22);
-        //addComponent(contentPane, key1, 150, 190, 183, 22);
-        //addComponent(contentPane, value1, 350, 190, 183, 22);
-        //addComponent(contentPane, key2, 150, 230, 183, 22);
-        //addComponent(contentPane, value2, 350, 230, 183, 22);
-        //addComponent(contentPane, key3, 150, 270, 183, 22);
-        //addComponent(contentPane, value3, 350, 270, 183, 22);
-        //addComponent(contentPane, key4, 150, 310, 183, 22);
-        //addComponent(contentPane, value4, 350, 310, 183, 22);
-        //addComponent(contentPane, key5, 150, 350, 183, 22);
-        //addComponent(contentPane, value5, 350, 350, 183, 22);
-        //addComponent(contentPane, key6, 150, 390, 183, 22);
-        //addComponent(contentPane, value6, 350, 390, 183, 22);
-        //addComponent(contentPane, key7, 150, 430, 183, 22);
-        //addComponent(contentPane, value7, 350, 430, 183, 22);
-        //addComponent(contentPane, key8, 150, 470, 183, 22);
-        //addComponent(contentPane, value8, 350, 470, 183, 22);
-        //addComponent(contentPane, key9, 150, 510, 183, 22);
-        //addComponent(contentPane, value9, 350, 510, 183, 22);
-        //addComponent(contentPane, key10, 150, 550, 183, 22);
-        //addComponent(contentPane, value10, 350, 550, 183, 22);
-        //addComponent(contentPane, selectTypeBox, 165, 225, 150, 30);
-        addComponent(contentPane, jButton1, 195, 275, 83, 28);
+        addComponent(contentPane, jButton1, 195, 230, 83, 28);
 
         this.setTitle("Java Scraping Tool");
         this.setLocation(new Point(300, 30));
@@ -396,31 +255,25 @@ public class TweenTribneEmailScrapper extends JFrame {
         container.add(c);
     }
 
-    private void jButton1_actionPerformed(ActionEvent e) {
-        // typeString = (String) selectTypeBox.getSelectedItem();
-        //String container = new String(jTextField1.getText());    
-        //String url = new String(jTextField2.getText());   
+    private void jButton1_actionPerformed(ActionEvent e) {   
         url = (String) selectsearchUrl.getSelectedItem();
-        //String destination = new String(jTextField3.getText());
-        //String item = (String) selectTypeBox.getSelectedItem();
         String searchstring = new String(jTextField4.getText());
         searchstring += " (site:linkedin.com/pub OR site:linkedin.com/in) -\"pub/dir\"";
-        //String searchsite = new String(jTextField5.getText());
-        String final_serachurl = url + "/search?q=" + URLEncoder.encode(searchstring);
+        String web_url = null;
+        if(url.equals("http://www.google.com")){
+            web_url = url + "/search?q=";
+        }
+        if(url.equals("http://www.dogpile.com")){
+            web_url = url + "/info.dogpl/search?q=";
+        }
+        String final_serachurl = web_url + URLEncoder.encode(searchstring);
+        //String final_serachurl = url + "/search?q=" + URLEncoder.encode(searchstring);
         //JOptionPane.showMessageDialog(null, searchstring);
         String serach_key = new String(jTextField4.getText());
-        /*
-         if (container.equals("") || url.equals("") || destination.equals("") || searchstring.equals("") || searchsite.equals("")) {
-         jButton1.setEnabled(false);
-         JLabel errorFields = new JLabel("<HTML><FONT COLOR = Blue>You must enter all blank fields.</FONT></HTML>");
-         JOptionPane.showMessageDialog(null, errorFields);
-         jButton1.setEnabled(true);
-         this.setVisible(true);
-         } else if (item.equals("select type")) {
-         */
-        if (url.equals("Select url") || searchstring.equals("")) {
+        String searchstring_validate = new String(jTextField4.getText());
+        if (url.equals("Select url") || searchstring_validate.equals("")) {
             jButton1.setEnabled(false);
-            JLabel errorFields = new JLabel("<HTML><FONT COLOR = Blue>You must enter all blank fields.</FONT></HTML>");
+            JLabel errorFields = new JLabel("<HTML><FONT COLOR = black>You must enter all blank fields.</FONT></HTML>");
             JOptionPane.showMessageDialog(null, errorFields);
             jButton1.setEnabled(true);
             this.setVisible(true);
@@ -432,9 +285,7 @@ public class TweenTribneEmailScrapper extends JFrame {
                 Document doc;
                 //doc = Jsoup.connect("http://google.com/search?q=rajcomics").userAgent("Mozilla").get();
                 doc = Jsoup.connect(final_serachurl).userAgent("Mozilla").timeout(10 * 1000).get();
-                //JOptionPane.showMessageDialog(null,final_serachurl);
-                //String title = doc.title();
-                //System.out.println("title : " + title);
+                
                 Elements links = doc.select("a[href]");
                 System.out.println("Total = " + links.size());
                 total_item = links.size();
@@ -447,7 +298,7 @@ public class TweenTribneEmailScrapper extends JFrame {
 
                 fetchbtn = new JButton(" Fetch E-Mail ");
                 exportbtn = new JButton(" Export ");
-                fetchbtn.setBounds(190, 590, 150, 25);
+                fetchbtn.setBounds(190, 600, 150, 25);
                 JLabel label[] = new JLabel[total_item];
                 i = 0;
                 total = 0;
@@ -455,13 +306,18 @@ public class TweenTribneEmailScrapper extends JFrame {
                 jp1.setLayout(null);
                 String str1, str2 = "";
                 for (Element link : links) {
+                    String find_string = link.text();
+                    //if(find_string.contains("LinkedIn")){
+                        //System.out.println(link.text());
+                    //}
                     //Get the value from href attribute
-                    if (link.text().equalsIgnoreCase("Similar")) {
-                        continue;
-                    }
-                    if(link.text().equalsIgnoreCase("1")||link.text().equalsIgnoreCase("2")||link.text().equalsIgnoreCase("3"))
-                        break;
-                    if (i >= 37 && !link.text().equalsIgnoreCase("Cached")) {
+                    //if (link.text().equalsIgnoreCase("Similar")) {
+                        //continue;
+                    //}
+                    //if(link.text().equalsIgnoreCase("1")||link.text().equalsIgnoreCase("2")||link.text().equalsIgnoreCase("3"))
+                        //break;
+                    //if (i >= 37 && !link.text().equalsIgnoreCase("Cached")) {
+                    if(find_string.contains("LinkedIn")){
                         str2 = "";
                         cbox[serialn] = new JCheckBox();
                         str1 = link.text();
@@ -473,44 +329,34 @@ public class TweenTribneEmailScrapper extends JFrame {
                         }
                         Cname[total] = str2;
                         total++;
-                        cbox[serialn].setBounds(50, 80 + (25 * (i - 37)), 250, 20);
+                        //cbox[serialn].setBounds(50, 80 + (25 * (i - 37)), 250, 20);
+                        cbox[serialn].setBounds(50, 30 + (50 * (serialn + 1)), 250, 20);
                         cbox[serialn].setText(str2);
                         jp1.add(cbox[serialn]);
                         if (serialn == 10) {
                             break;
                         }
                         serialn++;
-
                     }
                     i++;
                 }
-                exportbtn.setBounds(350, 590, 100, 25);
+                exportbtn.setBounds(450, 600, 150, 25);
                 exportbtn.addActionListener(
                 new ActionListener() {
                     public void actionPerformed(ActionEvent paramActionEvent) {
-
                         //.xlsx creation starts here
                         try {
                             Workbook wb = null;
-                            //System.out.print("Type xlsx i.e 2007+ if u wan2 create xlsx file (default xls) => ");
-                            //BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
                             String location = JOptionPane.showInputDialog(null, "Enter File URL.", "", 1);
-
                             String xlsx = "xls";
                             if (xlsx.equalsIgnoreCase("xlsx")) {
                                 wb = new XSSFWorkbook();
                             } else {
                                 wb = new HSSFWorkbook();
                             }
-
                             Sheet sheet = wb.createSheet("Email Scrapper");
                             int k = 1;
-                            //sheet.autoSizeColumn(0, true); //
                             sheet.setDefaultColumnWidth(20);
-                            //sheet.autoSizeColumn(1, true);
-                            // row numbering starts from 0
-                            
                             Row row[] = new Row[12];
                             Cell cell[][] = new Cell[12][2];
                             //Cell cell;
@@ -520,7 +366,6 @@ public class TweenTribneEmailScrapper extends JFrame {
                             
                             cell[0][1]=row[0].createCell(1);
                             cell[0][1].setCellValue("E-Mail Address");
-                            
                             for (int z = 0; z < 10; z++) {
                                 if (cbox[z].isSelected() && !cbox[z].getText().isEmpty()) {
                                     row[k] = sheet.createRow((short) k);
@@ -546,36 +391,33 @@ public class TweenTribneEmailScrapper extends JFrame {
                             JOptionPane.showMessageDialog(null, "Export Fails : " + exc.getMessage());
 
                         }
-
-
-
                         //.xlsx creation ends here
-
                     }
                 });
                 fetchbtn.addActionListener(
                 new ActionListener() {
                     public void actionPerformed(ActionEvent paramActionEvent) {
                         try {  
-                            String siteurl = JOptionPane.showInputDialog(null, "Enter site url.", "", 1);
+                            String siteurl = JOptionPane.showInputDialog(null, "Enter site url of users.(Please donot use http or www)", "", 1);
                             int email_label_counter = 0;
                             for (int z = 0; z < 10; z++) {
                                 if (cbox[z].isSelected() && !cbox[z].getText().isEmpty()) {
                                     String checked_value = cbox[z].getText();
                                     //String search_value = "(email | mailto | contact)" + " * " + siteurl + " " +checked_value;
-                                    //String final_search_value = url + "/search?q=" + URLEncoder.encode(search_value);
-                                    
+                                    //String final_search_value = url + "/search?q=" + URLEncoder.encode(search_value);   
                                     String search_value = "(email | mailto | contact) email " +siteurl + " " +checked_value;
-                                    //JOptionPane.showMessageDialog(null, search_value);
-                                    //String search_value1 = URLEncoder.encode("(email | mailto | contact)");
-                                    //String search_value2 = URLEncoder.encode(siteurl + " " +checked_value);
-                                    //String search_value3 = search_value1 + "+*+" + search_value2;
-                                    //String final_search_value = url + "/search?q=" + search_value3;
-                                    
-                                    String final_search_value = url + "/search?q=" + URLEncoder.encode(search_value);
+                                    String web_url1 = null;
+                                    if(url.equals("http://www.google.com")){
+                                        web_url1 = url + "/search?q=";
+                                    }
+                                    if(url.equals("http://www.dogpile.com")){
+                                        web_url1 = url + "/info.dogpl/search?q=";
+                                    }
+                                    String final_search_value = web_url1 + URLEncoder.encode(search_value);
+                                    //String final_search_value = url + "/search?q=" + URLEncoder.encode(search_value);
+
                                     //JOptionPane.showMessageDialog(null, final_search_value);
                                     Document emaildoc=null;
-                                    //emaildoc = Jsoup.connect(final_search_value).timeout(10 * 1000).userAgent("Mozilla/5.0 (Windows NT 5.1) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.65 Safari/535.11").get();
                                     emaildoc = Jsoup.connect(final_search_value).userAgent("Mozilla").timeout(10 * 1000).get();
                                     
                                     Elements mails = emaildoc.select("[class=st]");
@@ -607,18 +449,16 @@ public class TweenTribneEmailScrapper extends JFrame {
                                     //System.out.println("email : " + z);
                                     if (email_store[email_label_counter]=="" || email_store[email_label_counter]==null)
                                     {
-                                        email_store[email_label_counter]="Not Found..!!";
-                                        email_label[email_label_counter] = new JLabel("Not Found..!!");
+                                        email_store[email_label_counter]="Not Found.";
+                                        email_label[email_label_counter] = new JLabel("Not Found.");
+                                        email_label[email_label_counter].setBounds(300, 30+ (50 * (z + 1)), 300, 20);
                                     }                                    
-                                    else
-                                    email_label[email_label_counter] = new JLabel(email_store[email_label_counter]);
-                                    email_label[email_label_counter].setBounds(250, 30+ (50 * (z + 1)), 300, 20);
-                                    //email_label[email_label_counter].setText("test);
+                                    else {
+                                        email_label[email_label_counter] = new JLabel(email_store[email_label_counter]);
+                                        email_label[email_label_counter].setBounds(300, 30+ (50 * (z + 1)), 300, 20);
+                                    }
                                     jp1.add(email_label[email_label_counter]);
-                                    //email_label_counter++;
-                                   //jf1.setVisible(true);
-                                    //JOptionPane.showMessageDialog(null, email_label_counter); 
-                                email_label_counter++;
+                                    email_label_counter++;
                                 }
                              
                                 
@@ -632,7 +472,7 @@ public class TweenTribneEmailScrapper extends JFrame {
                 });
                 frmName.setBounds(50,50,150,20);
                 frmName.setFont(f1);
-                frmEmail.setBounds(250,50,150,20);
+                frmEmail.setBounds(300,50,300,20);
                 frmEmail.setFont(f1);
                 jp1.add(frmName);
                 jp1.add(frmEmail);
@@ -642,25 +482,6 @@ public class TweenTribneEmailScrapper extends JFrame {
                 this.setVisible(false);
                 contentPane = (JPanel) this.getContentPane();
                 this.remove(contentPane);
-                /* jl1.setBounds(10, 10, 50, 20);
-                 jl1.setText(name);
-                 jl2.setBounds(10, 40, 50, 20);
-                 jl3.setBounds(10, 70, 50, 20);
-                 jl4.setBounds(10, 100, 50, 20);
-                 jtf1.setBounds(100, 10, 50, 20);
-                 jtf2.setBounds(100, 40, 50, 20);
-                 jtf3.setBounds(100, 50, 50, 20);
-                 jtf4.setBounds(100, 100, 50, 20);
-                 jb1.setBounds(50, 130, 20, 20);
-                 jp1.add(jl1);
-                 jp1.add(jl2);
-                 jp1.add(jl3);
-                 jp1.add(jl4);
-                 jp1.add(jtf1);
-                 jp1.add(jtf2);
-                 jp1.add(jtf3);
-                 jp1.add(jtf4);
-                 jp1.add(jb1); */
                 this.setVisible(false);
                 jf1 = new JFrame();
                 jf1.add(jp1);
@@ -668,121 +489,13 @@ public class TweenTribneEmailScrapper extends JFrame {
 
                 jf1.setTitle("Ebizon e-mail Scrapper Tool");
                 jf1.setLocation(new Point(300, 30));
-                jf1.setSize(new Dimension(650, 700));
+                jf1.setSize(new Dimension(950, 730));
                 jf1.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-                //this.setResizable(true);
-                //org.jsoup.Connection conn=null;
-                //try
-                //{
-                //conn=Jsoup.connect("http://www.exchangeandmart.co.uk/used-cars-for-sale");
-                //}
-                //catch(Exception ex2)
-                //{
-                //JOptionPane.showMessageDialog(null,"Error 123 : "+ex2.getMessage());
-                //}
-                //try
-                //{
-                //doc = conn.post();   //Jsoup.connect("http://www.google.com/")
-                //}
-                //catch(Exception exx)
-                //{
-                //JOptionPane.showMessageDialog(null,"Error 3 : "+exx.getMessage());
-                //}
-                //.userAgent("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.21 (KHTML, like Gecko) Chrome/19.0.1042.0 Safari/535.21")
-                //          .timeout(10000)
-                //        .get();
-
-                //Elements element = doc.select("a");
-//String title = doc.title();
-
-                //Document doc1 = Jsoup.connect("http://www.google.com/search?q=hello").get();
-                //String st=(String) doc1.toString();
-                //  Document doc2 = Jsoup.parse(st);
-                //Elements newsHeadlines1 = doc.select("title");
-
-                //JOptionPane.showMessageDialog(null, doc); //+"// "+title+" //  "+element);
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, "Error  :  " + ex.getMessage());
             }
         }
-        /*
-         else if (item.equals("click to getEmail")) {
-         ClickToGet clicktoget = new ClickToGet();
-         clicktoget.fetchUrl(container, url, destination);
-         } else if (item.equals("profile")) {
-         JsoupProfile jsoup2 = new JsoupProfile();
-         jsoup2.fetchUrl(container, url, destination);
-         } else if (item.equals("recursive")) {
-         JSoupRecursive jsoup = new JSoupRecursive();
-         jsoup.fetchUrl(container, url, destination);
-         } else if (item.equals("redirect")) {
-         JsoupPageRedirect jsoup1 = new JsoupPageRedirect();
-         jsoup1.fetchUrl(container, url, destination);
-         } else if (item.equals("1 level deep")) {
-         OneLevelDeep jsoup1 = new OneLevelDeep();
-         jsoup1.fetchUrl(container, url, destination);
-         } else if (item.equalsIgnoreCase("1 level deep(post)")) {
-         getValues();
-         oneLevelDeepPost(container, url, destination);
-         } else if (item.equalsIgnoreCase("click to getEmail(post)")) {
-         getValues();
-         clickToGetPost(container, url, destination);
-         }
-         *
-         */
     }
-    /* private void jButton1_actionPerformed_new(ActionEvent e) {
-     typeString = (String) selectTypeBox.getSelectedItem();
-     System.out.println("\njButton1_actionPerformed(ActionEvent e) called.");
-     String container = new String(jTextField1.getText());
-     String url = new String(jTextField2.getText());
-     String destination = new String(jTextField3.getText());
-     String item = (String) selectTypeBox.getSelectedItem();
-     String searchstring = new String(jTextField4.getText());
-     String searchsite = new String(jTextField5.getText());
-
-     //Implementation of google search api.
-     String final_serachurl = url+"/search?q="+searchstring;
-     //Document doc = Jsoup.connect(url).get();
-     ///Elements links = doc.select("a[href]");
-     //Elements media = doc.select("[src]");
-     //Elements imports = doc.select("link[href]");
-
-     clickToGetPost(container, final_serachurl, destination);
-
-     //JLabel errorFields123 = new JLabel(final_serachurl);
-     //JOptionPane.showMessageDialog(null, errorFields123);
-
-     if (container.equals("") || url.equals("") || destination.equals("") || item.equals("select type") || searchstring.equals("select type") || searchsite.equals("select type")) {
-     //jButton1.setEnabled(false);
-     //JLabel errorFields = new JLabel("<HTML><FONT COLOR = Blue>You must enter all blank fields.</FONT></HTML>");
-     //JOptionPane.showMessageDialog(null, errorFields);
-     //jButton1.setEnabled(true);
-     //this.setVisible(true);
-     } else if (item.equals("click to getEmail")) {
-     ClickToGet clicktoget = new ClickToGet();
-     clicktoget.fetchUrl(container, url, destination);
-     } else if (item.equals("profile")) {
-     JsoupProfile jsoup2 = new JsoupProfile();
-     jsoup2.fetchUrl(container, url, destination);
-     } else if (item.equals("recursive")) {
-     JSoupRecursive jsoup = new JSoupRecursive();
-     jsoup.fetchUrl(container, url, destination);
-     } else if (item.equals("redirect")) {
-     JsoupPageRedirect jsoup1 = new JsoupPageRedirect();
-     jsoup1.fetchUrl(container, url, destination);
-     } else if (item.equals("1 level deep")) {
-     OneLevelDeep jsoup1 = new OneLevelDeep();
-     jsoup1.fetchUrl(container, url, destination);
-     } else if (item.equalsIgnoreCase("1 level deep(post)")) {
-     getValues();
-     oneLevelDeepPost(container, url, destination);
-     } else if (item.equalsIgnoreCase("click to getEmail(post)")) {
-     getValues();
-     clickToGetPost(container, url, destination);
-     }
-     }*/
-
     public static void main(String[] args) {
         JFrame.setDefaultLookAndFeelDecorated(true);
         JDialog.setDefaultLookAndFeelDecorated(true);
@@ -794,9 +507,6 @@ public class TweenTribneEmailScrapper extends JFrame {
         }
         new TweenTribneEmailScrapper();
     }
-
-    ;
-
     public void actionPerformed(ActionEvent arg0) {
     }
 
