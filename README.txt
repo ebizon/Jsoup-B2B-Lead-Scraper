@@ -12,4 +12,5 @@ ABOUT EMAIL SCRAPPER
 CONFIGURATION AND FEATURES:
  
  JRE should be installed on machine.
- Download the file from 'dist/TweenTribneEmailScrapper.jar' and run on your machine.
+ Download and extract the code. 
+ Open the file from 'dist/TweenTribneEmailScrapper.jar' and run on your machine.
