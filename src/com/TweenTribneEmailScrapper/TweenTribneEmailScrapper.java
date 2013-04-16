@@ -9,6 +9,8 @@ import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.util.StringTokenizer;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -55,18 +57,18 @@ public class TweenTribneEmailScrapper extends JFrame {
     private JTextField jTextField1, jTextField2, jTextField3, jTextField4, jTextField5;
     private JLabel labelKey, labelValue;
     private JTextField key1, value1, key2, value2, key3, value3, key4, value4, key5, value5, key6, value6, key7, value7, key8, value8, key9, value9, key10, value10;
-    private JButton jButton1, fetchbtn, exportbtn, backbtn;
+    private JButton jButton1, fetchbtn, exportbtn, backbtn, searchcsvbtn;
     private JPanel contentPane;
     private JComboBox selectTypeBox, selectsearchUrl;
     private HashMap<String, String> hashMap = new HashMap<String, String>();
     private ArrayList<String> arrayList = new ArrayList<String>();
     // for second panel code starts here
-    private JLabel jl1, jl2, jl3, jl4, searchresultlabel;
+    private JLabel jl1, jl2, jl3, jl4, searchresultlabel, csvreadlabel;
     public JLabel email_label[] = new JLabel[12];
-    private JTextField jtf1, jtf2, jtf3, jtf4;
-    private JButton jb1;
-    private JPanel jp1;
-    public JFrame jf1, jf2;
+    private JTextField jtf1, jtf2, jtf3, jtf4, csvreadtextbox;
+    private JButton jb1, csvreadbtn;
+    private JPanel jp1, c_import_panel;
+    public JFrame jf1, jf2, c_import_frame;
     private JCheckBox[] cbox = new JCheckBox[20];
     String[] email_store = new String[12];
     //for second panel code end
@@ -202,6 +204,9 @@ public class TweenTribneEmailScrapper extends JFrame {
 
         jButton1 = new JButton();
         contentPane = (JPanel) this.getContentPane();
+        
+        searchcsvbtn = new JButton();
+        contentPane = (JPanel) this.getContentPane();
 
         labelUrl.setHorizontalAlignment(SwingConstants.LEFT);
         //labelUrl.setForeground(new Color(0, 0, 255));
@@ -225,13 +230,26 @@ public class TweenTribneEmailScrapper extends JFrame {
         jButton1.setBackground(new Color(204, 204, 204));
         jButton1.setForeground(new Color(0, 0, 255));
         jButton1.setText("Enter");
+        
+        searchcsvbtn.setBackground(new Color(204, 204, 204));
+        searchcsvbtn.setForeground(new Color(0, 0, 255));
+        searchcsvbtn.setText("Search");
+        
+        
         jButton1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 jButton1_actionPerformed(e);
 
             }
         });
-// contentPane
+        //Action listner of searchcsvbtn.
+        searchcsvbtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                searchcsvbtn_actionPerformed(e);
+
+            }
+        });
+        // Implementation of contentPane.
         contentPane.setLayout(null);
         contentPane.setBorder(BorderFactory.createEtchedBorder());
         contentPane.setBackground(new Color(204, 204, 204));
@@ -241,6 +259,7 @@ public class TweenTribneEmailScrapper extends JFrame {
         addComponent(contentPane, selectsearchUrl, 185, 75, 183, 22);
         addComponent(contentPane, jTextField4, 185, 145, 183, 22);
         addComponent(contentPane, jButton1, 195, 230, 83, 28);
+        addComponent(contentPane, searchcsvbtn, 195, 300, 83, 28);
 
         this.setTitle("Java Scraping Tool");
         this.setLocation(new Point(300, 30));
@@ -532,7 +551,80 @@ public class TweenTribneEmailScrapper extends JFrame {
             }
         }
     }
-
+    
+    //Implementation of searchcsvbtn_actionPerformed.
+    private void searchcsvbtn_actionPerformed(ActionEvent e) {
+        c_import_panel = new JPanel();
+        c_import_panel.setLayout(null);
+        this.setVisible(false);
+        contentPane = (JPanel) this.getContentPane();
+        this.remove(contentPane);
+        this.setVisible(false);
+        //Create the object of label textbox and submit button.
+        csvreadlabel = new JLabel();
+        csvreadtextbox = new JTextField();
+        csvreadbtn = new JButton();
+        csvreadlabel.setBounds(280, 50, 120, 20); //set the position of csvreadlabel.
+        csvreadtextbox.setBounds(410, 50, 170, 20); //set the position of csvreadtextbox.
+        csvreadbtn.setBounds(600, 50, 100, 20); //set the position of csvreadbtn.
+        csvreadlabel.setText("Enter csv file path:");
+        csvreadbtn.setText("Search");
+        //Action listner of csvreadbtn button.
+        csvreadbtn.addActionListener(
+                 new ActionListener() {
+                 public void actionPerformed(ActionEvent paramActionEvent){
+                  String csvFile = (String) csvreadtextbox.getText();
+                  if (csvFile.equals("")) {
+                    //csvreadbtn.setEnabled(false);
+                    JLabel errorFields_csv = new JLabel("<HTML><FONT COLOR = black>Please enter csv file path.</FONT></HTML>");
+                    JOptionPane.showMessageDialog(null, errorFields_csv);
+                    csvreadbtn.setEnabled(true);
+                    //this.setVisible(true);
+                  } else {
+                    try { 
+                    //create BufferedReader to read csv file
+                    BufferedReader br = new BufferedReader(new FileReader(csvFile));
+                    String line = "";
+                    StringTokenizer st = null;
+                    int lineNumber = 0; 
+                    int tokenNumber = 0;
+                    //read comma separated file line by line
+                    while ((line = br.readLine()) != null) {
+                      lineNumber++;
+                      //use comma as token separator
+                      st = new StringTokenizer(line, ",");
+                      while (st.hasMoreTokens()) {
+                        tokenNumber++;
+                        String csv_searchurl = st.nextToken();
+                        
+                        //display csv values
+                        //System.out.print(st.nextToken() + "  ");
+                        System.out.print(csv_searchurl);
+                      }
+                      //reset token number
+                      tokenNumber = 0;
+                    }
+                  } catch (Exception e) {
+                    //System.err.println("CSV file cannot be read : " + e);
+                    JOptionPane.showMessageDialog(null, "CSV file cannot be read : " + e);
+                  }
+                  }
+                  System.out.println(csvFile);
+                 }
+        });
+        c_import_panel.add(csvreadlabel);
+        c_import_panel.add(csvreadtextbox);
+        c_import_panel.add(csvreadbtn);
+        
+        c_import_frame = new JFrame();
+        c_import_frame.add(c_import_panel);
+        c_import_frame.setVisible(true);
+        c_import_frame.setTitle("Ebizon e-mail Scrapper Tool");
+        c_import_frame.setLocation(new Point(150, 10));
+        c_import_frame.setSize(new Dimension(1024, 700));
+        c_import_frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+    }
+    
     public static void main(String[] args) {
         JFrame.setDefaultLookAndFeelDecorated(true);
         JDialog.setDefaultLookAndFeelDecorated(true);
