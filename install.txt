@@ -1,0 +1,17 @@
+CONTENTS OF THIS FILE
+---------------------
+
+ * Requirements and notes
+ * Installation
+
+REQUIREMENTS AND NOTES
+----------------------
+
+- Netbeans and java.
+
+INSTALLATION
+----------------------
+
+- Download the code from GIT repository.
+- Import the code on netbeans.
+- Execute the application.
