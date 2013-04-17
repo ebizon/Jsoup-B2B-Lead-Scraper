@@ -664,9 +664,6 @@ public class TweenTribneEmailScrapper extends JFrame {
                         {
                             alexa_india_rank = "No regional data";
                         }
-                        //JOptionPane.showMessageDialog(null, "" + alexa_india_rank);
-                        //System.out.println(ourSite);
-                        
                         //Create the label object.
                         alexa_site_url[lineNumber-1]=new JLabel();
                         alexa_site_url[lineNumber-1].setBounds(60, 110 + lineNumber * 30, 250, 30);
