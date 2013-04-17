@@ -609,6 +609,7 @@ public class TweenTribneEmailScrapper extends JFrame {
                     while ((count_line = count_br.readLine()) != null) {
                       count_lineNumber++;
                     }
+                    
                     alexa_csv_count_row = count_lineNumber;
                     //Create the label array.
                     //JLabel alexa_site_url[] = new JLabel[count_lineNumber];
@@ -645,6 +646,9 @@ public class TweenTribneEmailScrapper extends JFrame {
                         //String ourSite ="www.javadomain.in";
                         String url_alexa = "http://www.alexa.com/search?q="+ourSite+"&r=home_home&p=bigtop";
                         Document document = Jsoup.connect(url_alexa).userAgent("Mozilla").timeout(10 * 1000).get();
+                        String alexa_india_rank;
+                        try
+                        {
                         Elements india = document.select("div.row");
                         List mylist = new ArrayList();
                         for (Element answerer : india) {
@@ -654,8 +658,14 @@ public class TweenTribneEmailScrapper extends JFrame {
                         String[] world_india_arr;
                         String delimiter = ":";  
                         world_india_arr = world_india.split(delimiter);
-                        String alexa_india_rank = world_india_arr[2];
-                        //System.out.println(alexa_india_rank);
+                        alexa_india_rank = world_india_arr[2];
+                        }
+                        catch(Exception ex1)
+                        {
+                            alexa_india_rank = "No regional data";
+                        }
+                        //JOptionPane.showMessageDialog(null, "" + alexa_india_rank);
+                        //System.out.println(ourSite);
                         
                         //Create the label object.
                         alexa_site_url[lineNumber-1]=new JLabel();
