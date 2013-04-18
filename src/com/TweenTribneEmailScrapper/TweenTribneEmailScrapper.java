@@ -713,6 +713,7 @@ public class TweenTribneEmailScrapper extends JFrame {
                         try {
                             Workbook wb1 = null;
                             String location_alexa_file = JOptionPane.showInputDialog(null, "Enter File URL.", "", 1);
+                            
                             String xlsx1 = "xls";
                             if (xlsx1.equalsIgnoreCase("xlsx")) {
                                 wb1 = new XSSFWorkbook();
@@ -730,13 +731,19 @@ public class TweenTribneEmailScrapper extends JFrame {
                             cell[0][0].setCellValue(" URL ");
                             cell[0][1] = row[0].createCell(1);
                             cell[0][1].setCellValue("Alexa ranks");
+                            
                             for (int alexa_counter = 0; alexa_counter < alexa_csv_count_row; alexa_counter++) {
+                                    try{
                                     row[alexa_c] = sheet1.createRow((short) alexa_c);
                                     cell[alexa_c][0] = row[alexa_c].createCell(0);
                                     cell[alexa_c][0].setCellValue(alexa_site_url[alexa_counter].getText());
                                     cell[alexa_c][1] = row[alexa_c].createCell(1);
                                     cell[alexa_c][1].setCellValue(alexa_site_rank[alexa_counter].getText());
                                     alexa_c++;
+                                    }catch(Exception err){
+                                        
+                                    }
+                                    
                             }
                             
                             String excelFileName = "sites_alexarating.xls";
@@ -751,7 +758,7 @@ public class TweenTribneEmailScrapper extends JFrame {
                             fos.close();
                             JOptionPane.showMessageDialog(null, "Sites alexa rating file has been exported.");
                         } catch (Exception exc1) {
-                            JOptionPane.showMessageDialog(null, "Export Fails : " + exc1.getMessage());
+                            JOptionPane.showMessageDialog(null, "Export Fails1 : " + exc1.getMessage());
                         }
                         //.xlsx creation ends here
                     }
@@ -771,6 +778,7 @@ public class TweenTribneEmailScrapper extends JFrame {
     
     //Implementation of exportallbtn_actionPerformed.
     private void exportallbtn_actionPerformed(ActionEvent e) {
+        /*
         exportall_panel = new JPanel();
         exportall_panel.setLayout(null);
         this.setVisible(false);
@@ -936,6 +944,7 @@ public class TweenTribneEmailScrapper extends JFrame {
                                     alexa_c++;
                             }
                             
+                            
                             String excelFileName = "sites_alexarating.xls";
                             
                             if (wb1 instanceof XSSFWorkbook) {
@@ -965,6 +974,7 @@ public class TweenTribneEmailScrapper extends JFrame {
         exportall_frame.setLocation(new Point(130, 30));
         exportall_frame.setSize(new Dimension(1024, 700));
         exportall_frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        */
     }
     
     public static void main(String[] args) {
