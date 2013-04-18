@@ -59,7 +59,7 @@ public class TweenTribneEmailScrapper extends JFrame {
     private JTextField jTextField1, jTextField2, jTextField3, jTextField4, jTextField5;
     private JLabel labelKey, labelValue;
     private JTextField key1, value1, key2, value2, key3, value3, key4, value4, key5, value5, key6, value6, key7, value7, key8, value8, key9, value9, key10, value10;
-    private JButton jButton1, fetchbtn, exportbtn, backbtn, searchcsvbtn;
+    private JButton jButton1, fetchbtn, exportbtn, backbtn, searchcsvbtn, exportallbtn;
     private JPanel contentPane;
     private JComboBox selectTypeBox, selectsearchUrl;
     private HashMap<String, String> hashMap = new HashMap<String, String>();
@@ -71,8 +71,9 @@ public class TweenTribneEmailScrapper extends JFrame {
     private JTextField jtf1, jtf2, jtf3, jtf4, csvreadtextbox;
     private JButton jb1, csvreadbtn;
     public JButton alexa_export_btn = new JButton();
-    private JPanel jp1, c_import_panel;
-    public JFrame jf1, jf2, c_import_frame;
+    public JButton exportall_btn = new JButton();
+    private JPanel jp1, c_import_panel, exportall_panel;
+    public JFrame jf1, jf2, c_import_frame, exportall_frame;
     private JCheckBox[] cbox = new JCheckBox[20];
     public int alexa_csv_count_row;
     String[] email_store = new String[12];
@@ -232,13 +233,13 @@ public class TweenTribneEmailScrapper extends JFrame {
         jTextField2.setForeground(new Color(0, 0, 255));
         jTextField2.setToolTipText("Enter your URL");
 
-        jButton1.setBackground(new Color(204, 204, 204));
-        jButton1.setForeground(new Color(0, 0, 255));
+        //jButton1.setBackground(new Color(204, 204, 204));
+        //jButton1.setForeground(new Color(0, 0, 255));
         jButton1.setText("Enter");
         
-        searchcsvbtn.setBackground(new Color(204, 204, 204));
-        searchcsvbtn.setForeground(new Color(0, 0, 255));
-        searchcsvbtn.setText("Search alexa");
+        //searchcsvbtn.setBackground(new Color(204, 204, 204));
+        //searchcsvbtn.setForeground(new Color(0, 0, 255));
+        searchcsvbtn.setText("Export alexa ranks");
         
         
         jButton1.addActionListener(new ActionListener() {
@@ -254,6 +255,19 @@ public class TweenTribneEmailScrapper extends JFrame {
 
             }
         });
+        
+        //Create the object of export all button.
+        exportallbtn = new JButton();
+        exportallbtn.setText("Export All detail");
+        //export_all_btn.setBackground(new Color(204, 204, 204));
+        //export_all_btn.setForeground(new Color(0, 0, 255));
+        //Action listner of searchcsvbtn.
+        exportallbtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                exportallbtn_actionPerformed(e);
+            }
+        });
+        
         // Implementation of contentPane.
         contentPane.setLayout(null);
         contentPane.setBorder(BorderFactory.createEtchedBorder());
@@ -263,8 +277,9 @@ public class TweenTribneEmailScrapper extends JFrame {
         addComponent(contentPane, labelSearch, 65, 150, 130, 18);
         addComponent(contentPane, selectsearchUrl, 185, 75, 183, 22);
         addComponent(contentPane, jTextField4, 185, 145, 183, 22);
-        addComponent(contentPane, jButton1, 195, 230, 83, 28);
-        addComponent(contentPane, searchcsvbtn, 180, 300, 125, 28);
+        addComponent(contentPane, jButton1, 195, 200, 83, 28);
+        addComponent(contentPane, searchcsvbtn, 170, 350, 175, 28);
+        addComponent(contentPane, exportallbtn, 170, 400, 175, 28);
 
         this.setTitle("Java Scraping Tool");
         this.setLocation(new Point(300, 30));
@@ -741,7 +756,6 @@ public class TweenTribneEmailScrapper extends JFrame {
                         //.xlsx creation ends here
                     }
                 });
-        
         c_import_panel.add(csvreadlabel);
         c_import_panel.add(csvreadtextbox);
         c_import_panel.add(csvreadbtn);
@@ -753,6 +767,204 @@ public class TweenTribneEmailScrapper extends JFrame {
         c_import_frame.setLocation(new Point(300, 30));
         c_import_frame.setSize(new Dimension(700, 700));
         c_import_frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+    }
+    
+    //Implementation of exportallbtn_actionPerformed.
+    private void exportallbtn_actionPerformed(ActionEvent e) {
+        exportall_panel = new JPanel();
+        exportall_panel.setLayout(null);
+        this.setVisible(false);
+        contentPane = (JPanel) this.getContentPane();
+        this.remove(contentPane);
+        this.setVisible(false);
+        //Create the object of label textbox and submit button.
+        csvreadlabel = new JLabel();
+        csvreadtextbox = new JTextField();
+        csvreadbtn = new JButton();
+        alexa_page_heading = new JLabel();
+        csvreadlabel.setBounds(60, 50, 120, 20); //set the position of csvreadlabel.
+        csvreadtextbox.setBounds(190, 50, 200, 20); //set the position of csvreadtextbox.
+        
+        //csvreadtextbox.setText("/Users/ebizondev/Desktop/shashank/export/sample.csv");
+       
+        csvreadbtn.setBounds(400, 50, 100, 20); //set the position of csvreadbtn.
+        csvreadlabel.setText("Enter csv file path:");
+        csvreadbtn.setText("Search");
+        
+        alexa_page_heading.setBounds(200, 10, 250, 20); //set the position of csvreadbtn.
+        alexa_page_heading.setText("Search sites alexa ranks");
+        Font f_alexa_page = new Font(alexa_page_heading.getFont().getName(), Font.BOLD, 15);
+        alexa_page_heading.setFont(f_alexa_page);
+        //Action listner of csvreadbtn button.
+        csvreadbtn.addActionListener(
+                 new ActionListener() {
+                 public void actionPerformed(ActionEvent paramActionEvent){
+                  String csvFile = (String) csvreadtextbox.getText();
+                  if (csvFile.equals("")) {
+                    //csvreadbtn.setEnabled(false);
+                    JLabel errorFields_csv = new JLabel("<HTML><FONT COLOR = black>Please enter csv file path.</FONT></HTML>");
+                    JOptionPane.showMessageDialog(null, errorFields_csv);
+                    csvreadbtn.setEnabled(true);
+                    //this.setVisible(true);
+                  } else {
+                    try { 
+                    //create BufferedReader to read csv file
+                    BufferedReader br = new BufferedReader(new FileReader(csvFile));
+                    String line = "";
+                    StringTokenizer st = null;
+                    int lineNumber = 0; 
+                    int tokenNumber = 0;
+                    //read comma separated file line by line and find the count of lines.
+                    BufferedReader count_br = new BufferedReader(new FileReader(csvFile));
+                    String count_line = "";
+                    int count_lineNumber = 0; 
+                    while ((count_line = count_br.readLine()) != null) {
+                      count_lineNumber++;
+                    }
+                    
+                    alexa_csv_count_row = count_lineNumber;
+                    //Create the label array.
+                    //JLabel alexa_site_url[] = new JLabel[count_lineNumber];
+                    //JLabel alexa_site_rank[] = new JLabel[count_lineNumber];
+                    alexa_site_url = new JLabel[count_lineNumber];
+                    alexa_site_rank = new JLabel[count_lineNumber];
+                    
+                    alexa_site_url_heading = new JLabel();
+                    alexa_site_url_heading.setBounds(60, 100, 250, 30);
+                    alexa_site_url_heading.setText("URL");
+                    exportall_panel.add(alexa_site_url_heading);
+                    
+                    alexa_site_rank_heading = new JLabel();
+                    alexa_site_rank_heading.setBounds(350, 100, 250, 30);
+                    alexa_site_rank_heading.setText("Alexa ranks");
+                    exportall_panel.add(alexa_site_rank_heading);
+                    Font f_alexa1 = new Font(alexa_site_url_heading.getFont().getName(), Font.BOLD, 15);
+                    alexa_site_url_heading.setFont(f_alexa1);
+                    Font f_alexa2 = new Font(alexa_site_rank_heading.getFont().getName(), Font.BOLD, 15);
+                    alexa_site_rank_heading.setFont(f_alexa2);
+                    //Create the object of alexa_export_btn.
+                    //alexa_export_btn = new JButton();
+                    alexa_export_btn.setBounds(530, 50, 130, 20);
+                    alexa_export_btn.setText("Export Alexa");
+                    exportall_panel.add(alexa_export_btn);
+                    
+                    while ((line = br.readLine()) != null) {
+                      lineNumber++;
+                      //use comma as token separator
+                      st = new StringTokenizer(line, ",");
+                      while (st.hasMoreTokens()) {
+                        tokenNumber++;
+                        String ourSite = st.nextToken();
+                        //String ourSite ="www.javadomain.in";
+                        String url_alexa = "http://www.alexa.com/search?q="+ourSite+"&r=home_home&p=bigtop";
+                        Document document = Jsoup.connect(url_alexa).userAgent("Mozilla").timeout(10 * 1000).get();
+                        String alexa_india_rank;
+                        try
+                        {
+                        Elements india = document.select("div.row");
+                        List mylist = new ArrayList();
+                        for (Element answerer : india) {
+                            mylist.add(answerer.text().toString());
+                        }
+                        String world_india = (String) mylist.get(5);
+                        String[] world_india_arr;
+                        String delimiter = ":";  
+                        world_india_arr = world_india.split(delimiter);
+                        alexa_india_rank = world_india_arr[2];
+                        }
+                        catch(Exception ex1)
+                        {
+                            alexa_india_rank = "No regional data";
+                        }
+                        //Create the label object.
+                        alexa_site_url[lineNumber-1]=new JLabel();
+                        alexa_site_url[lineNumber-1].setBounds(60, 110 + lineNumber * 30, 250, 30);
+                        alexa_site_url[lineNumber-1].setText(ourSite);
+                        exportall_panel.add(alexa_site_url[lineNumber-1]);
+                        
+                        alexa_site_rank[lineNumber-1]=new JLabel();
+                        alexa_site_rank[lineNumber-1].setBounds(350, 110 + lineNumber * 30, 250, 30);
+                        alexa_site_rank[lineNumber-1].setText(alexa_india_rank);
+                        exportall_panel.add(alexa_site_rank[lineNumber-1]);
+                        
+                        //System.out.print("hjghgjghj"); //csv_searchurl);
+                      }
+                      //reset token number
+                      tokenNumber = 0;
+                    }
+                  } catch (Exception e) {
+                    //System.err.println("CSV file cannot be read : " + e);
+                    JOptionPane.showMessageDialog(null, "CSV file cannot be read : " + e);
+                  }
+                    exportall_frame.setVisible(false);
+                    exportall_frame.setVisible(true);
+                  }
+                  //System.out.println(csvFile);
+                 }
+        });
+        //Action listner of Export button alexa_export_btn.
+        alexa_export_btn.addActionListener(
+                        new ActionListener() {
+                    public void actionPerformed(ActionEvent paramActionEvent) {
+                        //.xlsx creation starts here
+                        try {
+                            Workbook wb1 = null;
+                            String location_alexa_file = JOptionPane.showInputDialog(null, "Enter File URL.", "", 1);
+                            String xlsx1 = "xls";
+                            if (xlsx1.equalsIgnoreCase("xlsx")) {
+                                wb1 = new XSSFWorkbook();
+                            } else {
+                                wb1 = new HSSFWorkbook();
+                            }
+                            Sheet sheet1 = wb1.createSheet("Site Alexa ranking");
+                            int alexa_c = 1;
+                            sheet1.setDefaultColumnWidth(25);
+                            Row row[] = new Row[alexa_csv_count_row+1];
+                            Cell cell[][] = new Cell[alexa_csv_count_row+1][2];
+                            //Cell cell;
+                            row[0] = sheet1.createRow((short) 0);
+                            cell[0][0] = row[0].createCell(0);
+                            cell[0][0].setCellValue(" URL ");
+                            cell[0][1] = row[0].createCell(1);
+                            cell[0][1].setCellValue("Alexa ranks");
+                            for (int alexa_counter = 0; alexa_counter < alexa_csv_count_row; alexa_counter++) {
+                                    row[alexa_c] = sheet1.createRow((short) alexa_c);
+                                    cell[alexa_c][0] = row[alexa_c].createCell(0);
+                                    cell[alexa_c][0].setCellValue(alexa_site_url[alexa_counter].getText());
+                                    cell[alexa_c][1] = row[alexa_c].createCell(1);
+                                    cell[alexa_c][1].setCellValue(alexa_site_rank[alexa_counter].getText());
+                                    alexa_c++;
+                            }
+                            
+                            String excelFileName = "sites_alexarating.xls";
+                            
+                            if (wb1 instanceof XSSFWorkbook) {
+                                excelFileName += "x";
+                            }
+                            //java.io.File fs =new java.io.File("c:\")
+                            FileOutputStream fos = new FileOutputStream(location_alexa_file + "/" + excelFileName);
+                            wb1.write(fos);
+                            fos.flush();
+                            fos.close();
+                            JOptionPane.showMessageDialog(null, "Sites alexa rating file has been exported.");
+                        } catch (Exception exc1) {
+                            JOptionPane.showMessageDialog(null, "Export Fails : " + exc1.getMessage());
+                        }
+                        //.xlsx creation ends here
+                    }
+                });
+        
+        exportall_panel.add(csvreadlabel);
+        exportall_panel.add(csvreadtextbox);
+        exportall_panel.add(csvreadbtn);
+        exportall_panel.add(alexa_page_heading);
+        exportall_frame = new JFrame();
+        exportall_frame.add(exportall_panel);
+        exportall_frame.setVisible(true);
+        exportall_frame.setTitle("Ebizon e-mail Scrapper Tool for search email contact and alexa rank.");
+        exportall_frame.setLocation(new Point(130, 30));
+        exportall_frame.setSize(new Dimension(1024, 700));
+        exportall_frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
     
     public static void main(String[] args) {
